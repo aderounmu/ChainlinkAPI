@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 function btoa(data){
 	return Buffer.from(data).toString('base64');
