@@ -67,7 +67,7 @@ app.get('/check/order/:orderID',async (req,res)=>{
 	//getting the result 
 
 	return res.json({
-		status: details.status,
+		status: details.status == "COMPLETED" ? 1 : 0,
 		value: details.purchase_units[0].amount.value,
 		currency_code: details.purchase_units[0].amount.currency_code,
 	});
