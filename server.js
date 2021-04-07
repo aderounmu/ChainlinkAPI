@@ -16,7 +16,7 @@ function btoa(data){
 }
 
 //simple route to access paypal 
-app.post('/check/order',async (req,res)=>{
+app.get('/check/order/:orderID',async (req,res)=>{
 
 
 
@@ -52,7 +52,7 @@ app.post('/check/order',async (req,res)=>{
 	// 2. Set up your server to receive a call from the client
 
 	// 2a. Get the order ID from the request body
-	let orderID = req.body.orderID;
+	let orderID = req.params.orderID;
 
 	// 3. Call PayPal to get the transaction details
 	let detailsres = await axios.get(process.env.PAYPAL_ORDER_API + orderID,
