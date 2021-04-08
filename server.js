@@ -80,6 +80,27 @@ app.get('/check/order/:orderID',async (req,res)=>{
 
 })
 
+//
+app.get('/check/naira',async (req,res) =>{
+
+	try{
+
+		let rateres = await axios({
+			method: 'get',
+			url: process.env.NAIRA_RATE_URL+'?app_id='+process.env.NAIRA_RATE_TOKEN,
+		});
+	
+	let ratedata = await rateres.data
+	//res.json(rate)
+	res.json({
+		NGN: ratedata.rates.NGN
+	})
+
+	}catch(error){
+		return res.send(error);
+	}
+})
+
 
 app.listen(port,()=>{
 	console.log()
