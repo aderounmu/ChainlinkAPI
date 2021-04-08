@@ -70,11 +70,15 @@ app.get('/check/order/:orderID',async (req,res)=>{
 		status: details.status == "COMPLETED" ? 1 : 0,
 		value: details.purchase_units[0].amount.value,
 		currency_code: details.purchase_units[0].amount.currency_code,
+		status_code : details.status == "COMPLETED" ? details.id : "0",
 	});
 
 
 	} catch(error){
-		return res.send(error);
+		//return res.send(error);
+		return res.json({
+			status: "0",
+		})
 	}
 	
 
