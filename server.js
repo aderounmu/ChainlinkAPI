@@ -78,6 +78,7 @@ app.get('/check/order/:orderID',async (req,res)=>{
 		//return res.send(error);
 		return res.json({
 			status: "0",
+			status_code: "0",
 		})
 	}
 	
